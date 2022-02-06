@@ -1,0 +1,161 @@
+* {
+  --white: #ffffff; 
+  --black-1: #202020; 
+  --primary: #1b90fc; 
+  --primary-90: #1b90fc90; 
+  --grey: #929292; 
+  --headline1: 700 2.5rem/normal Roboto Condensed; 
+  --subtitle1: 700 1.625rem/1.5rem Roboto Condensed; 
+  --button: 700 0.875rem/1rem Roboto; 
+  --headline2: 700 1.5rem/normal Roboto Condensed; 
+  --body1-regular: 400 1rem/1.5rem Roboto; 
+  --body1-bold: 700 1rem/1.5rem Roboto; 
+  --body2-bold: 700 0.875rem/1.5rem Roboto; 
+  --body2-regular: 400 0.875rem/1.5rem Roboto; 
+  --caption-regular: 400 0.75rem/1.5rem Roboto; 
+  --caption-bold: 700 0.75rem/1.5rem Roboto;
+
+  --bottom-line-block-size: 5rem;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.hero {
+  inline-size: 100vw;
+  block-size: 100vh;
+  
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  block-size: 100%;
+  background-color: var(--black-1);
+  z-index: 1;
+}
+
+.hero-content::after {
+  content: '';
+  background-color: var(--black-1);
+  
+  inline-size: 3rem;
+  
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 44%;
+
+  display: block;
+  z-index: 1;
+  clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 25% 0%)
+}
+
+.loki {
+  inline-size: 55%;
+  block-size: 100%;
+  background-image: url('../images/loki.png');
+  background-size: cover;
+  background-position: right;
+}
+
+.card {
+  padding: 1.5rem;
+  inline-size: 100%;
+  max-inline-size: 400px;
+  margin: auto;
+}
+
+.card img {
+  margin-block-end: 1.5rem;
+}
+
+.card .title {
+  color: var(--white);
+  font: var(--headline2);
+  text-transform: uppercase;
+}
+
+.card .text {
+  color: var(--white);
+  font: var(--body2-regular);
+}
+
+.card .button {
+  color: var(--white);
+  font: var(--button);
+  text-transform: uppercase;
+
+  background-color: var(--primary);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 2rem;
+}
+
+.bottom-line {
+  background-color: var(--white);
+  inline-size: 100%;
+  height: var(--bottom-line-block-size);
+  clip-path: polygon(0% 100%, 0% 100%, 100% 100%, 100% 0%);
+  z-index: 1;
+  inset-block-end: 0;
+  position: absolute;
+}
+
+@media screen and (max-width:920px) {
+
+  .loki {
+    inline-size: 100%;
+    block-size: 100%;
+    max-block-size: 500px;
+  }
+
+  .hero {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+    block-size: initial;
+    inline-size: 100%;
+  }
+
+  .hero-content::after {
+    display: none;
+  }
+
+  .card {
+    padding: 2rem;
+    padding-block-end: calc(var(--bottom-line-block-size) + 1rem);
+    box-sizing: border-box;
+    max-inline-size: none;
+    margin: auto;
+  }
+
+  .card img {
+    margin-block-end: 0rem;
+  }
+
+  .card .button {
+    inline-size: 100%;
+  }
+
+  * {
+    --bottom-line-block-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 620px) and (max-width: 920px) {
+  .card {
+    max-inline-size: 600px;
+  }
+}
